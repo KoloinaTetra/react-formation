@@ -146,7 +146,7 @@ export default function CreateProduct() {
                   <Row>
                     <Col>
                         <Form.Group controlId="NameFile">
-                            <Form.Label>Namefile</Form.Label>
+                            <Form.Label>Image</Form.Label>
                             <Form.Control required={true} type="file" onChange={handleChangeNamefile}/>
                         </Form.Group>
                       

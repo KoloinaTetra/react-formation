@@ -2,6 +2,8 @@ import React from "react";
 import {Link} from 'react-router-dom';
 
 const Navbar = () => {
+    let user =  JSON.parse(localStorage.getItem('user-info'))
+    console.log("user=", user);
 
     return(
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -21,11 +23,12 @@ const Navbar = () => {
                     <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i className="fas fa-user fa-fw"></i>
                     </Link>
-                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" >
+                        <li><Link className="dropdown-item" to="#!">{user.name}</Link></li>
                         <li><Link className="dropdown-item" to="#!">Settings</Link></li>
                         <li><Link className="dropdown-item" to="#!">Activity Log</Link></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><Link className="dropdown-item" to="#!">Logout</Link></li>
+                        <li><Link className="dropdown-item" to="/">Logout</Link></li>
                     </ul>
                 </li>
             </ul>

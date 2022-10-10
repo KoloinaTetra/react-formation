@@ -150,7 +150,7 @@ export default function EditProduct() {
                   <Row style={{display: "none" }}> 
                     <Col>
                       <Form.Group controlId="File">
-                          <Form.Label>Namefile</Form.Label>
+                          <Form.Label>Image</Form.Label>
                           <Form.Control ref={inputFile} type="file" onChange={(event)=>{
                             handleChangeFile(event.target.files)
                           }}/>
