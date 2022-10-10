@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
@@ -9,10 +9,12 @@ import Swal from 'sweetalert2';
 
 export default function EditProduct() {
     const navigate = useNavigate();
+    const inputFile = useRef(null);
 
     const { id } = useParams()
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
+    const [file, setFile] = useState(null)
     const [namefile, setNamefile] = useState("")
     const [price, setPrice] = useState("")
     const [remarque, setRemarque] = useState("")
@@ -40,6 +42,20 @@ export default function EditProduct() {
     })
   }
 
+  const handleChangeFile = (files) => {
+    if(files && files[0]){
+      setFile(files[0]);
+      setNamefile(files[0].name);
+    }
+    else {
+      setFile(null);
+      setNamefile("");
+    }
+  }
+
+  const handleChangeNamefile = () => {
+    inputFile.current.click();
+  }
 
   const updateProduct = async (e) => {
     e.preventDefault();
@@ -49,7 +65,7 @@ export default function EditProduct() {
     formData.append('title', title)
     formData.append('description', description)
     formData.append('price', price)
-    formData.append('namefile_img', namefile)
+    formData.append('file', file)
     formData.append('remarque', remarque)
 
 
@@ -119,14 +135,27 @@ export default function EditProduct() {
                       </Col>
                   </Row>
                   <Row> 
-                      <Col>
-                        <Form.Group controlId="Namefile">
-                            <Form.Label>Namefile</Form.Label>
-                            <Form.Control type="text" value={namefile} onChange={(event)=>{
-                              setNamefile(event.target.value)
-                            }}/>
-                        </Form.Group>
-                      </Col>  
+                    <Col>
+                      <Form.Group controlId="Namefile">
+                          <Form.Label>Namefile</Form.Label>
+                          <Form.Control readOnly={true} type="text" value={namefile} 
+                            placeholder="Select file"
+                            style={{backgroundColor: "unset"}}
+                            onChange={()=>{}} 
+                            onClick={handleChangeNamefile}
+                          />
+                      </Form.Group>
+                    </Col>  
+                  </Row>
+                  <Row style={{display: "none" }}> 
+                    <Col>
+                      <Form.Group controlId="File">
+                          <Form.Label>Namefile</Form.Label>
+                          <Form.Control ref={inputFile} type="file" onChange={(event)=>{
+                            handleChangeFile(event.target.files)
+                          }}/>
+                      </Form.Group>
+                    </Col>  
                   </Row>
                   <Row> 
                       <Col>
