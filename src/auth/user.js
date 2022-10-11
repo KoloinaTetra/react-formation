@@ -1,19 +1,22 @@
-var $user = {
-}
+const KEY = "UxKQQHL6z4rg2339Tr4cq";
 
 function $getUser(){
-    return $user;
-}
-
-function $setUser(user){
-    $user = {
-        ...$user,
-        ...user,
+    try {
+        var text = localStorage.getItem(KEY);
+        var user = JSON.parse(text);
+        return user;
+    }
+    catch(e){
+        return null;
     }
 }
 
+function $setUser(user){
+    localStorage.setItem(KEY, JSON.stringify(user))
+}
+
 function $resetUser(){
-    $user = {};
+    localStorage.setItem(KEY, "")
 }
 
 export {
