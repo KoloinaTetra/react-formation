@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
+import { $setUser } from "../../auth/user";
 
 
 
@@ -33,6 +34,7 @@ function Login() {
                 icon:"success",
                 text:data.message
             })
+            $setUser(data);
             localStorage.setItem("user-info",JSON.stringify(data))
             console.log("data",JSON.stringify(data))
             navigate("/admin")

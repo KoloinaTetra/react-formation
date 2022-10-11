@@ -7,6 +7,7 @@ import EditProduct from './components/frontend/edit';
 
 import Home from './components/frontend/Home';
 import Login from './components/admin/Login';
+import Logout from './components/admin/Logout';
 import MasterLayout from './layouts/admin/MasterLayout';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/logout" element={<Logout/>} />
           <Route path="/category" element={<Category/>} />
           <Route path="/create" element={<CreateProduct/>} />
           <Route path="/edit/:id" element={<EditProduct/>} />

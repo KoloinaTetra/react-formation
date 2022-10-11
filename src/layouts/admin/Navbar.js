@@ -28,7 +28,7 @@ const Navbar = () => {
                         <li><Link className="dropdown-item" to="#!">Settings</Link></li>
                         <li><Link className="dropdown-item" to="#!">Activity Log</Link></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><Link className="dropdown-item" to="/">Logout</Link></li>
+                        <li><Link className="dropdown-item" to="/logout">Logout</Link></li>
                     </ul>
                 </li>
             </ul>

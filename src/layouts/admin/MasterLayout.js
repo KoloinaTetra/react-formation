@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 import {Route, Routes, Redirect, Switch, Navigate} from 'react-router-dom';
 
 
@@ -11,9 +12,18 @@ import Footer from "./Footer";
 
 import Dashboard from "../../components/admin/Dashboard";
 import Profile from "../../components/admin/Profile";
+import { $getUser } from "../../auth/user";
 
 
 const MasterLayout = () => {
+    const navigate = useNavigate();
+    const user = $getUser();
+
+    React.useEffect(()=>{
+        if(!user || !user.id){
+            navigate("/admin/login")
+        }
+    },[])
 
     return(
         <div className="sb-nav-fixed">
